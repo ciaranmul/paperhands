@@ -48,6 +48,11 @@ _global_script_classes=[ {
 "class": "StoryManager",
 "language": "GDScript",
 "path": "res://StoryManager.gd"
+}, {
+"base": "Area2D",
+"class": "ToRoom",
+"language": "GDScript",
+"path": "res://ToRoom.gd"
 } ]
 _global_script_class_icons={
 "Apartment": "",
@@ -57,7 +62,8 @@ _global_script_class_icons={
 "Room": "",
 "Story": "",
 "StoryFactory": "",
-"StoryManager": ""
+"StoryManager": "",
+"ToRoom": ""
 }
 
 [application]
