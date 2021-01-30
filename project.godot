@@ -8,9 +8,50 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Apartment",
+"language": "GDScript",
+"path": "res://Apartment.gd"
+}, {
+"base": "Node",
+"class": "CoinTracker",
+"language": "GDScript",
+"path": "res://CoinTracker.gd"
+}, {
+"base": "Node",
+"class": "Phone",
+"language": "GDScript",
+"path": "res://Phone.gd"
+}, {
+"base": "Node",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player.gd"
+}, {
+"base": "Node",
+"class": "Room",
+"language": "GDScript",
+"path": "res://Room.gd"
+}, {
+"base": "Node",
+"class": "Story",
+"language": "GDScript",
+"path": "res://Story.gd"
+}, {
+"base": "Node",
+"class": "StoryManager",
+"language": "GDScript",
+"path": "res://StoryManager.gd"
+} ]
 _global_script_class_icons={
-
+"Apartment": "",
+"CoinTracker": "",
+"Phone": "",
+"Player": "",
+"Room": "",
+"Story": "",
+"StoryManager": ""
 }
 
 [application]
