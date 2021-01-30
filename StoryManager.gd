@@ -6,7 +6,7 @@ class_name StoryManager
 export(int, 60, 300) var _story_interval = 120
 var _stories = []
 var _current_story: Story setget ,get_current_story
-var _story_factory: StoryFactory
+var _story_factory = StoryFactory.new()
 
 func evaluate_vote(vote) -> bool:
 	if _current_story.get_is_true():

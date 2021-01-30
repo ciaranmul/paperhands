@@ -11,7 +11,8 @@ func get_stories() -> Array:
 		dir.list_dir_begin()
 		var file_path = dir.get_next()
 		while file_path != "":
-			stories.append(_get_story_from_path(file_path))
+			if file_path != "." && file_path != "..":
+				stories.append(_get_story_from_path(_stories_root_path + file_path))
 			file_path = dir.get_next()
 	else:
 		print("StoryFactory: An error occured when trying to access path.")
