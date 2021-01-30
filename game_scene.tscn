@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://backgrounds/bedroom.png" type="Texture" id=1]
+[ext_resource path="res://object.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="background" type="TextureRect" parent="."]
+margin_left = 58.9139
+margin_top = 2.19806
+margin_right = 1978.91
+margin_bottom = 1082.2
+mouse_filter = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="object" parent="." instance=ExtResource( 2 )]
+_name = "demo object"
