@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://backgrounds/kitchen.png" type="Texture" id=1]
-[ext_resource path="res://ToRoom.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ToRoom.tscn" type="PackedScene" id=1]
+[ext_resource path="res://backgrounds/kitchen.png" type="Texture" id=2]
+
 
 [node name="Kitchen" type="Node"]
 
@@ -11,12 +12,12 @@ margin_top = 2.24493
 margin_right = 962.858
 margin_bottom = 602.245
 mouse_filter = 2
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ToBedroom" parent="." instance=ExtResource( 2 )]
+[node name="ToBedroom" parent="." instance=ExtResource( 1 )]
 position = Vector2( 931.644, 377.147 )
 _next_scene = "Bedroom"
 [connection signal="input_event" from="ToBedroom" to="ToBedroom" method="_on_ToRoom_input_event"]
