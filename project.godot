@@ -40,6 +40,11 @@ _global_script_classes=[ {
 "path": "res://Story.gd"
 }, {
 "base": "Node",
+"class": "StoryFactory",
+"language": "GDScript",
+"path": "res://StoryFactory.gd"
+}, {
+"base": "Node",
 "class": "StoryManager",
 "language": "GDScript",
 "path": "res://StoryManager.gd"
@@ -51,6 +56,7 @@ _global_script_class_icons={
 "Player": "",
 "Room": "",
 "Story": "",
+"StoryFactory": "",
 "StoryManager": ""
 }
 
