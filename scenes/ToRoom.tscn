@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/ToRoom.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.4696, 29.8892 )
+extents = Vector2( 94.6258, 50.587 )
 
 [node name="ToRoom" type="Area2D"]
 script = ExtResource( 2 )

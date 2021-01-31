@@ -15,4 +15,4 @@ func _ready():
 
 func _on_ToRoom_input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-		get_tree().change_scene("res://rooms/%s.tscn" % _next_scene)
+		Global.goto_scene("res://rooms/%s.tscn" % _next_scene)

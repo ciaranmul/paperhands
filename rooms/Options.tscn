@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/FxVolumeSlider.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ToRoom.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/back_to_menu.png" type="Texture" id=3]
+[ext_resource path="res://sprites/music_volume.png" type="Texture" id=4]
+[ext_resource path="res://sprites/fx_volume.png" type="Texture" id=5]
+
+[node name="Options" type="Node2D"]
+
+[node name="FxVolumeSlider" type="HSlider" parent="."]
+margin_left = 268.529
+margin_top = 148.502
+margin_right = 764.529
+margin_bottom = 164.502
+min_value = 1.0
+value = 50.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="FxVolumeSlider"]
+position = Vector2( -85.4035, 13.4848 )
+texture = ExtResource( 5 )
+
+[node name="MusicVolumeSlider" type="HSlider" parent="."]
+margin_left = 270.027
+margin_top = 319.309
+margin_right = 766.027
+margin_bottom = 335.309
+min_value = 1.0
+value = 50.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="MusicVolumeSlider"]
+position = Vector2( -91.3968, 10.4882 )
+texture = ExtResource( 4 )
+
+[node name="ToMenu" parent="." instance=ExtResource( 2 )]
+position = Vector2( 510.923, 442.001 )
+_next_scene = "Game"
+
+[node name="Sprite" parent="ToMenu" index="0"]
+texture = ExtResource( 3 )
+[connection signal="value_changed" from="FxVolumeSlider" to="FxVolumeSlider" method="_on_FxVolumeSlider_value_changed"]
+[connection signal="value_changed" from="MusicVolumeSlider" to="MusicVolumeSlider" method="_on_MusicVolumeSlider_value_changed"]
+
+[editable path="ToMenu"]

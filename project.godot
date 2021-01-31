@@ -25,11 +25,6 @@ _global_script_classes=[ {
 "path": "res://scripts/Phone.gd"
 }, {
 "base": "Node",
-"class": "Player",
-"language": "GDScript",
-"path": "res://scripts/Player.gd"
-}, {
-"base": "Node",
 "class": "Room",
 "language": "GDScript",
 "path": "res://scripts/Room.gd"
@@ -58,7 +53,6 @@ _global_script_class_icons={
 "Apartment": "",
 "CoinTracker": "",
 "Phone": "",
-"Player": "",
 "Room": "",
 "Story": "",
 "StoryFactory": "",
@@ -69,11 +63,17 @@ _global_script_class_icons={
 [application]
 
 config/name="paperhands"
-run/main_scene="res://scenes/Game.tscn"
+run/main_scene="res://rooms/Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://scripts/Global.gd"
+Hud="*res://scenes/hud.tscn"
 
 [display]
 
+window/size/width=900
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

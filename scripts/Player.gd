@@ -1,6 +1,6 @@
 extends Node
 
-class_name Player
+#class_name Player
 
 var hasWallet = false
 var hasPrivateKey = false
