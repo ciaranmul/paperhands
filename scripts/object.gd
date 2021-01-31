@@ -13,8 +13,7 @@ func _ready():
 
 
 func _on_object_input_event(viewport, event, shape_idx):
-	var format_string = "clicked %s"
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-		print(format_string % _name)
+		var volume = (2.0/100 * Global._fx_volume)  - 1
+		$SoundEffect.volume_db = volume
 		$SoundEffect.play()
-

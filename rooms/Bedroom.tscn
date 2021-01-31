@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://backgrounds/bedroom.png" type="Texture" id=1]
 [ext_resource path="res://sprites/laptop.png" type="Texture" id=2]
@@ -6,12 +6,10 @@
 [ext_resource path="res://sprites/lamp.png" type="Texture" id=4]
 [ext_resource path="res://sprites/pillow.png" type="Texture" id=5]
 [ext_resource path="res://scenes/ToRoom.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/arrow_down.png" type="Texture" id=7]
 [ext_resource path="res://audio/laptop.wav" type="AudioStream" id=8]
 [ext_resource path="res://audio/pillow.wav" type="AudioStream" id=9]
 [ext_resource path="res://audio/lamp.wav" type="AudioStream" id=10]
-
-
-
 
 [node name="Bedroom" type="Node"]
 
@@ -60,12 +58,19 @@ texture = ExtResource( 4 )
 stream = ExtResource( 10 )
 
 [node name="ToKitchen" parent="." instance=ExtResource( 6 )]
-position = Vector2( 499.23, 569.977 )
+position = Vector2( 491.738, 554.994 )
 _next_scene = "Kitchen"
-[connection signal="input_event" from="ToKitchen" to="ToKitchen" method="_on_ToRoom_input_event"]
+
+[node name="Sprite" parent="ToKitchen" index="0"]
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" parent="ToKitchen" index="1"]
+position = Vector2( 2.99658, 5.99323 )
 
 [editable path="laptop"]
 
 [editable path="pillow"]
 
 [editable path="lamp"]
+
+[editable path="ToKitchen"]
