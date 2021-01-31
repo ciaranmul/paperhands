@@ -1,7 +1,111 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scripts/Phone.gd" type="Script" id=1]
+[ext_resource path="res://scenes/StoryManager.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Phone.gd" type="Script" id=2]
+[ext_resource path="res://sprites/phone_temp.png" type="Texture" id=3]
+[ext_resource path="res://scenes/CoinTracker.tscn" type="PackedScene" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://audio/mobile_vibrate.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/correct.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/incorrect.wav" type="AudioStream" id=8]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 69.139, 32.4227 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 67.104, 33.0745 )
 
 [node name="Phone" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 192.229, 296.058 )
+scale = Vector2( 1.35564, 1.48631 )
+texture = ExtResource( 3 )
+
+[node name="TimeBetweenStories" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="VibrateSound" type="AudioStreamPlayer" parent="TimeBetweenStories"]
+stream = ExtResource( 6 )
+
+[node name="StoryManager" parent="." instance=ExtResource( 1 )]
+
+[node name="CoinTracker" parent="." instance=ExtResource( 4 )]
+
+[node name="StoryText" type="Label" parent="."]
+margin_left = 53.0
+margin_top = 104.0
+margin_right = 319.0
+margin_bottom = 375.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Headline" type="Label" parent="."]
+margin_left = 49.0
+margin_top = 54.0
+margin_right = 316.0
+margin_bottom = 101.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stonk Machine"
+align = 1
+autowrap = true
+clip_text = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Upvote" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Upvote"]
+position = Vector2( 102.453, 507.367 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upvote"]
+position = Vector2( 103.426, 509.291 )
+shape = SubResource( 1 )
+
+[node name="Downvote" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Downvote"]
+position = Vector2( 263.513, 502.862 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Downvote"]
+position = Vector2( 262.145, 507.112 )
+shape = SubResource( 2 )
+
+[node name="Correct" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Incorrect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="TimeOnStory" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="TimeLeft" type="Label" parent="."]
+margin_left = 78.5184
+margin_top = 405.664
+margin_right = 284.518
+margin_bottom = 445.664
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextCooldown" type="Timer" parent="."]
+wait_time = 3.0
+[connection signal="timeout" from="TimeBetweenStories" to="." method="_on_TimeBetweenStories_timeout"]
+[connection signal="input_event" from="Upvote" to="." method="_on_Upvote_input_event"]
+[connection signal="input_event" from="Downvote" to="." method="_on_Downvote_input_event"]
+[connection signal="timeout" from="TimeOnStory" to="." method="_on_TimeOnStory_timeout"]
+[connection signal="timeout" from="TextCooldown" to="." method="_on_TextCooldown_timeout"]
