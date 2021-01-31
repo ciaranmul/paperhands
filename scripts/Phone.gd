@@ -8,11 +8,17 @@ var _displayed_story: Story
 var was_correct: bool
 var answered: bool = false
 var refresh_text_flag: bool = false
+var track_num_stories: int = 0
+var market_closed: bool = false
 
 func show_story():
 	_displayed_story = $StoryManager.get_current_story()
 	$StoryText.text = _displayed_story.get_body()
 	$Headline.text = _displayed_story.get_heading()
+	
+	if $Headline.text == "MARKET CLOSED":
+		market_closed = true
+		
 	#$StoryText.show()
 
 func vote_on_story(vote: bool):
@@ -33,29 +39,35 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if refresh_text_flag == true:
-		if $TimeOnStory.time_left > 0:
-			$TimeLeft.text = "Seconds Before Short: " + str(int($TimeOnStory.time_left))
-		elif !answered:
-			$TimeLeft.text = "Shorted"
-			$TextCooldown.start()
-			$TimeOnStory.stop()
-			refresh_text_flag = false
-		elif was_correct and answered:
-			$TimeLeft.text = "To The Moon!"
-			$TextCooldown.start()
-			$TimeOnStory.stop()
-			refresh_text_flag = false
-		elif !was_correct and answered:
-			$TimeLeft.text = "Paperhands"
-			$TextCooldown.start()
-			$TimeOnStory.stop()
-			refresh_text_flag = false
+	if market_closed == false:
+		if refresh_text_flag == true:
+			if $TimeOnStory.time_left > 0:
+				$TimeLeft.text = "Seconds Before Short: " + str(int($TimeOnStory.time_left))
+			elif !answered:
+				$TimeLeft.text = "Shorted"
+				$TextCooldown.start()
+				$TimeOnStory.stop()
+				refresh_text_flag = false
+			elif was_correct and answered:
+				$TimeLeft.text = "To The Moon!"
+				$TextCooldown.start()
+				$TimeOnStory.stop()
+				refresh_text_flag = false
+			elif !was_correct and answered:
+				$TimeLeft.text = "Paperhands"
+				$TextCooldown.start()
+				$TimeOnStory.stop()
+				refresh_text_flag = false
+		else:
+			if $TextCooldown.time_left == 0:
+				$TimeLeft.text = "Bitcoin Value: " + str($CoinTracker.get_fait_value())
+				$Headline.text = "Stonk Machine"
+				$StoryText.text = ""
 	else:
-		if $TextCooldown.time_left == 0:
-			$TimeLeft.text = "Bitcoin Value: " + str($CoinTracker.get_fait_value())
-			$Headline.text = "Stonk Machine"
-			$StoryText.text = ""
+		$TimeBetweenStories.stop()
+		$TimeOnStory.stop()
+		$TimeLeft.text = "Closing Bitcoin Value: " + str($CoinTracker.get_fait_value())
+		$StoryText.text = "Markets will open again on tomorrow."
 	
 		
 	#if $TimeBetweenStories 
@@ -74,13 +86,13 @@ func _generate_value_delta() -> float:
 #Recieve upvote/downvote input when button is clicked only when a story is shown and TimeBetweenStories counter is at 0
 func _on_Upvote_input_event(viewport, event, shape_idx):
 	var format_string = "clicked %s"
-	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and $TimeBetweenStories.time_left == 0:
+	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and $TimeBetweenStories.time_left == 0 and market_closed == false:
 		$TimeOnStory.stop()
 		vote_on_story(true)
 
 func _on_Downvote_input_event(viewport, event, shape_idx):
 	var format_string = "clicked %s"
-	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and $TimeBetweenStories.time_left == 0:
+	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and $TimeBetweenStories.time_left == 0 and market_closed == false:
 		$TimeOnStory.stop()
 		vote_on_story(false)
 		

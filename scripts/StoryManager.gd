@@ -7,8 +7,8 @@ export(int, 60, 300) var _story_interval = 120
 var _stories = []
 var _current_story: Story setget ,get_current_story
 var _story_factory = StoryFactory.new()
-
-
+var _number_of_stories: int
+var _track_stories_shown: int = 0
 
 func evaluate_vote(vote) -> bool:
 	if _current_story.get_is_true():
@@ -23,18 +23,19 @@ func get_current_story() -> Story:
 	randomize()
 	var was_shown = true
 	
+	_track_stories_shown += 1
+	
 	#Loops randomly until an unshown sample is chosen
-	while(was_shown == true):
-		_current_story = _stories[rand_range(0, (_stories.size()-1))]
+	while(was_shown == true and _track_stories_shown <= _number_of_stories):
+		_current_story = _stories[rand_range(0, (_stories.size()))]
 		was_shown = _current_story.get_was_shown()
+	
+	if(_track_stories_shown > _number_of_stories):
+		_current_story = Story.new("MARKET CLOSED", "", false)
 	
 	_mark_story_as_shown()
 	
 	return _current_story
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +44,7 @@ func _ready():
 
 func _init():
 	_stories = _story_factory.get_stories()
+	_number_of_stories = _stories.size()
 
 func _mark_story_as_shown():
 	_current_story.set_was_shown(true)
