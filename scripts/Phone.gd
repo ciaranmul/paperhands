@@ -7,7 +7,7 @@ var _coin_tracker: CoinTracker
 var _displayed_story: Story
 var was_correct: bool
 var answered: bool = false
-var refresh_text_flag: bool = true
+var refresh_text_flag: bool = false
 
 func show_story():
 	_displayed_story = $StoryManager.get_current_story()
@@ -33,8 +33,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	print($TextCooldown.time_left)
-	
 	if refresh_text_flag == true:
 		if $TimeOnStory.time_left > 0:
 			$TimeLeft.text = "Seconds Before Short: " + str(int($TimeOnStory.time_left))
@@ -55,7 +53,7 @@ func _process(delta):
 			refresh_text_flag = false
 	else:
 		if $TextCooldown.time_left == 0:
-			$TimeLeft.text = "Bitcoin Value:" + str($CoinTracker.get_fait_value())
+			$TimeLeft.text = "Bitcoin Value: " + str($CoinTracker.get_fait_value())
 			$Headline.text = "Stonk Machine"
 			$StoryText.text = ""
 	
