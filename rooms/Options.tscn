@@ -9,10 +9,10 @@
 [node name="Options" type="Node2D"]
 
 [node name="FxVolumeSlider" type="HSlider" parent="."]
-margin_left = 282.014
-margin_top = 118.536
-margin_right = 778.014
-margin_bottom = 134.536
+margin_left = 268.529
+margin_top = 148.502
+margin_right = 764.529
+margin_bottom = 164.502
 min_value = 1.0
 value = 50.0
 script = ExtResource( 1 )
@@ -25,10 +25,10 @@ position = Vector2( -85.4035, 13.4848 )
 texture = ExtResource( 5 )
 
 [node name="MusicVolumeSlider" type="HSlider" parent="."]
-margin_left = 283.512
-margin_top = 289.343
-margin_right = 779.512
-margin_bottom = 305.343
+margin_left = 270.027
+margin_top = 319.309
+margin_right = 766.027
+margin_bottom = 335.309
 min_value = 1.0
 value = 50.0
 script = ExtResource( 1 )
@@ -41,7 +41,7 @@ position = Vector2( -91.3968, 10.4882 )
 texture = ExtResource( 4 )
 
 [node name="ToMenu" parent="." instance=ExtResource( 2 )]
-position = Vector2( 524.407, 412.034 )
+position = Vector2( 510.923, 442.001 )
 _next_scene = "Game"
 
 [node name="Sprite" parent="ToMenu" index="0"]

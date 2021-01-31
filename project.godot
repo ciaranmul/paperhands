@@ -69,9 +69,11 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://scripts/Global.gd"
+Hud="*res://scenes/hud.tscn"
 
 [display]
 
+window/size/width=900
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

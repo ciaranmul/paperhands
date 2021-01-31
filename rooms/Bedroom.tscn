@@ -14,10 +14,10 @@
 [node name="Bedroom" type="Node"]
 
 [node name="background" type="TextureRect" parent="."]
-margin_left = 58.9139
-margin_top = 2.19806
-margin_right = 1978.91
-margin_bottom = 1082.2
+margin_left = 1.97817
+margin_top = 0.699708
+margin_right = 1921.97
+margin_bottom = 1080.7
 mouse_filter = 2
 texture = ExtResource( 1 )
 __meta__ = {
@@ -25,7 +25,7 @@ __meta__ = {
 }
 
 [node name="laptop" parent="." instance=ExtResource( 3 )]
-position = Vector2( 253.5, 381.095 )
+position = Vector2( 196.564, 379.597 )
 _name = "laptop"
 
 [node name="Sprite" parent="laptop" index="0"]
@@ -38,7 +38,7 @@ position = Vector2( 0.667419, -6.00677 )
 stream = ExtResource( 8 )
 
 [node name="pillow" parent="." instance=ExtResource( 3 )]
-position = Vector2( 792.282, 446.198 )
+position = Vector2( 735.346, 444.7 )
 _name = "pillow"
 
 [node name="Sprite" parent="pillow" index="0"]
@@ -48,7 +48,7 @@ texture = ExtResource( 5 )
 stream = ExtResource( 9 )
 
 [node name="lamp" parent="." instance=ExtResource( 3 )]
-position = Vector2( 875.344, 493.341 )
+position = Vector2( 818.408, 491.843 )
 _name = "lamp"
 
 [node name="Sprite" parent="lamp" index="0"]
@@ -58,7 +58,7 @@ texture = ExtResource( 4 )
 stream = ExtResource( 10 )
 
 [node name="ToKitchen" parent="." instance=ExtResource( 6 )]
-position = Vector2( 491.738, 554.994 )
+position = Vector2( 434.803, 553.496 )
 _next_scene = "Kitchen"
 
 [node name="Sprite" parent="ToKitchen" index="0"]
